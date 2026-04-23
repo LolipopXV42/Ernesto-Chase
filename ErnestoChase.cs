@@ -89,7 +89,15 @@ public class ErnestoChase : ModBehaviour
         GameObject ernestoObj = LoadPrefab("Assets/ErnestoChase/Ernesto.prefab");
         AssetBundleUtilities.ReplaceShaders(ernestoObj);
         ernesto = Instantiate(ernestoObj, Locator.GetPlayerTransform().position, Quaternion.identity).GetComponent<ErnestoController>();
+        public void RespawnErnesto()
+    if (ernesto != null)
+        // ... (existing code)
+        ernesto = Instantiate(ernestoObj, Locator.GetPlayerTransform().position, Quaternion.identity).GetComponent<ErnestoController>();
+        
+        // Add this line here too:
+        ernesto.transform.localScale = new Vector3(10.0f, 10.0f, 10.0f); 
     }
+    
 
     private void OnPlayerFogWarp()
     {
